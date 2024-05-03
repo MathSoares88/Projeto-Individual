@@ -62,7 +62,12 @@
         transition: 2s;
        
 }
-
+.casa-card img:not(:hover) {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    transition: 2s;
+}
 .btnCasas{
     display: flex;
     justify-content: center;

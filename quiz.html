@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./assets/css/quiz.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz das Casas de Hogwarts</title>
+  <link rel="stylesheet" href="./assets/css/quiz.css">
+  <link rel="stylesheet" href="./assets/js/quiz.js">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Descubra sua Casa</h1>
-        </header>
-        <main>
-            <div id="quizz-container">
-                <p id="question">
-                    <span id="question-number">1</span> &#8212;
-                    <span id="question-text"></span> 
+  <div class="container">
 
-                </p>
-
-            </div>
-        </main>
+    <div class="h1"><h1>Descubra a sua casa em Hogwarts</h1></div>
+    <hr>
+    <div id="quiz">
+      <div id="question"></div>
+      <br><br><br>
+      <div id="options"></div>
+      <br>
+      <button id="nextButton">Próxima Pergunta</button>
     </div>
+    <div id="result"></div>
+  </div>
+
+  
+  
+  <script src="./assets/js/quiz.js"></script>
 </body>
 </html>
