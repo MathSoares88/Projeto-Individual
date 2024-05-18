@@ -1,5 +1,5 @@
 .Pers{
-    background-color:#e8e8e8 ;
+   
     height: 100%;
     width: 100%;
 }
@@ -8,7 +8,7 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    background-color: #e8e8e8;
+    
 }
 .SobrePersonagem{
     font-size: 40px;
@@ -18,8 +18,7 @@
 .tituloPersonagem{
     position: absolute;
     margin: -80px auto 0 auto;
-    background: rgb(129,36,32);
-    background: linear-gradient(90deg, rgba(129,36,32,1) 26%, rgba(23,7,5,1) 52%);
+   background-color: #10141B;
     height: 150px;
     width: 100%;
     border-radius: 10px;
@@ -29,14 +28,6 @@
     color: #FFF;
     font-family: 'Manrope', sans-serif;
 }
-
-
-
-
-
-
-
-
 
 .sobre h2{
     margin: 15px 0 0 0;

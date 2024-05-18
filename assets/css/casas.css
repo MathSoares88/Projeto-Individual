@@ -1,5 +1,5 @@
 .Casas{
-    background-color: #e8e8e8;
+    background-image: url(../img/hyperdetailed-cinematic-abandoned-creepy-dark-library.jpg);
 }
 
 .sessaoCasas {
@@ -14,8 +14,7 @@
     margin-top: 10px;
     position: absolute;
     margin: -80px auto 0 auto;
-    background: rgb(129,36,32);
-    background: linear-gradient(90deg, rgba(129,36,32,1) 26%, rgba(23,7,5,1) 52%);
+   background-color: #10141B;
     height: 150px;
     width: 100%;
     border-radius: 10px;

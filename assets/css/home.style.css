@@ -14,8 +14,7 @@ body {
     align-items: center;
     margin-right: 40%;
    
-    background: rgb(129,36,32);
-    background: linear-gradient(90deg, rgba(129,36,32,1) 26%, rgba(23,7,5,1) 52%);
+    background-color: #10141B;
         
 }
 .nav-list{
@@ -71,7 +70,7 @@ body {
     color: #FFFF;
     flex-direction: column;
     border-color: black;
-
+   margin-top: 160px;
 }
 
 .pHome{
@@ -81,6 +80,7 @@ body {
     top: 280px;
     color: #FFFF;
     flex-direction: column;
+    margin-top: 160px;
     
 }
 
