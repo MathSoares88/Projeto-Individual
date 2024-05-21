@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../assets/css/TelaLogin.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="log-box">
+            <h1>Login</h1>
+            <hr>
+            <form id="form_login_monitor" action="/login" method="POST">
+                <div class="input-group">
+                    <label for="input_email">Email:</label>
+                    <input id="input_email" type="email" required>
+                </div>
+                <div class="input-group">
+                    <label for="input_senha">Senha:</label>
+                    <input id="input_senha" type="password" required>
+                    <center>
+             <button class="button" type="button" onclick="Login()">Login</button>
+            </form>
+            <hr>
+           <h1 class="footer-text">Não possui Cadastro?</h1>
+           <a href="./TelaCadastro.html"> <button class="cadastro" type="button" onclick="cadastro()">Cadastre-se</button></a>
+        </center>
+        </div>    
+        <span id="tela"></span>
+        </body>
+
+        <script>
+            function Login(){
+                let email = (input_email.value);
+                let senha = (input_senha.value);
+
+                let emailSanitizado = email.toLowerCase().trim();
+
+                if (!emailSanitizado || !senha) {
+                alert('Email ou Senha inválidos');
+                return false;
+            }
+                if(senha.length < 8){
+                    alert(`A senha deve ter pelo menos 8 caracteres`)
+                }
+            }
+
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const nextPage = urlParams.get('redirect_to');
+
+            if (redirectTo) {
+                window.location.href = 'quiz,html';
+            } else {
+                window.location.href = 'index.html'; // Substitua 'home.html' pela URL da página inicial
+            }
+
+
+
+
+            function validateEmail(email) {
+            // Expressão regular para validar email
+            var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        // Função para validar a complexidade da senha
+        function validatePassword(password) {
+            // Expressão regular para senha (mínimo 8 caracteres, pelo menos uma letra maiúscula, uma minúscula e um número)
+            var re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+            return re.test(password);
+        }
+        </script>
+       
+        
