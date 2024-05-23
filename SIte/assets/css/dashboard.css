@@ -1,0 +1,316 @@
+@import url('https://fonts.googleapis.com/css?family=Mulish&display=swap');
+
+:root {
+    --primary-color: #090E14;
+    --text: white;
+    --sidebar-gray-light: #D8DCE0;
+    --sidebar-gray-background: #373E4A;
+    --success: #00C896;
+}
+.container{
+  display: flex;
+}
+
+/* Estilos gerais */
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Mulish;
+  }
+  
+  /* Barra lateral superior */
+  .sidebar-top {
+    text: white;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-bottom: 32px;
+  }
+  
+  /* Barra lateral superior em modo recolhido */
+  body.collapsed .sidebar-top {
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+    justify-content: center;
+  }
+  
+  /* Navegação */
+  nav {
+    position: sticky;
+    top: 0;
+    left: 9;
+    height: 100vh;
+    background-color: var(--primary-color);
+    width: 18rem;
+    overflow-x: hidden;
+    padding: 1.8rem 0.85rem;
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    transition: width 6.5s ease-in-out;
+  }
+  
+  /* Navegação em modo recolhido */
+  body.collapsed nav {
+    width: 80px;
+  }
+  
+  /* Logo */
+  .logo-wrapper {
+    padding-left: 4px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .logo {
+    width: 54px;
+    height: 54px;
+  }
+  
+  /* Botão de expansão */
+  .expand-btn {
+    position: relative;
+    display: grid;
+    place-items: center;
+    background-color: var(--sidebar-gray-light);
+    border-radius: 6px;
+    height: 1px;
+    display: block;
+    cursor: pointer;
+    transition: 0.35s;
+  }
+  
+  /* Botão de expansão em modo recolhido */
+  body.collapsed .expand-btn {
+    margin-top: auto;
+  }
+  
+  /* Ícone do botão de expansão */
+  .expand-btn svg {
+    stroke: white;
+    transform: rotate(180deg);
+    width: 42px;
+    height: 42px;
+  }
+  
+  /* Ícone do botão de expansão em modo recolhido */
+  body.collapsed .expand-btn svg {
+    margin-top: 4px;
+    transform: rotate(360deg);
+    width: 48px;
+    height: 48px;
+  }
+  
+  /* Conteúdo principal */
+  main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Divisor */
+  .divider {
+    width: 100%;
+    background-color: var(--sidebar-gray-light);
+    height: 1px;
+  }
+
+  .sidebar-links ul {
+    list-style-type: none;
+    position: relative;
+  }
+  
+  .sidebar-links li {
+    position: relative;
+  }
+  
+  .sidebar-links li a {
+    margin: 8px 8px;
+    padding: 12px;
+    color: var(--sidebar-gray-light);
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    height: 56px;
+    text-decoration: none;
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
+  }
+  
+  .sidebar-links li a svg {
+    color: var(--sidebar-gray-light);
+    height: 32px;
+    width: 32px;
+  }
+  
+  .sidebar-links li a:hover svg {
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .sidebar-links li a:hover {
+    background-color: var(--sidebar-gray-background);
+    transition: all 100ms ease-in;
+    border-radius: 10px;
+  }
+  
+  /* Parte do perfil */
+  .sidebar-profile {
+    display: flex;
+    align-items: center;
+    padding-left: 2px;
+    gap: 20px;
+  }
+  
+  /* Avatar */
+  .avatar-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .avatar {
+    display: block;
+    height: 50px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    filter: drop-shadow(-20px 10px rgba(0, 0, 0, 0.11));
+  }
+  
+  .avatar-hover {
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* Nome do avatar */
+  .avatar-name {
+    margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .user-name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-align: left;
+  }
+  
+  .email {
+    color: var(--sidebar-gray-light);
+    font-size: 0.89rem;
+  }
+  
+  /* Status online */
+  .online-status {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--success);
+    bottom: 3px;
+    right: 3px;
+  }
+  
+  /* Links ativos */
+  .sidebar-links li.active a {
+    color: white;
+  }
+  
+  .sidebar-links li.active svg {
+    stroke: white;
+  }
+
+  .siderbar-bottom{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: auto;
+  }
+
+  .divider{
+    width: 100%;
+    background-color: var(--sidebar-gray-light);
+    height: 1px;
+    display: block;
+  }
+
+  .siderbar-bottom{
+    margin: 6px 0px;
+  }
+
+.dashboard{
+  gap: 40rem;
+  padding: 40rem;
+}
+
+.container-kpi{
+  display: flex;
+  gap: -30px;
+}
+  .kpi-section{
+    display: flex;
+    width: 600px;
+    height: 210px;
+    margin-left: 40px;
+    background-color: purple;
+    border-radius: 6px;
+    gap: -30px;
+  }
+
+  .h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 30px;
+  }
+
+  .kpi-section2{
+    display: flex;
+    width: 200px;
+    height: 210px;
+    margin-left: 35px;
+    background-color: purple;
+    border-radius: 6px; 
+    
+  }
+
+  .kpi-section3{
+    display: flex;
+    width: 200px;
+    height: 210px;
+    margin-left: 35px;
+    background-color: purple;
+    border-radius: 6px; 
+    
+  }
+
+  .sessao{
+    display: flex;
+    
+  }
+
+  .grafico1{
+    margin-left: 40px;
+    background-color: green;
+    height: 400px;
+    margin-top: 1rem;
+    width: 400px;
+    border-radius: 6px;
+  }
+
+  .grafico2{
+    margin-left: 40px;
+    background-color: orange;
+    height: 400px;
+    width: 634px;
+    margin-top: 1rem;
+    border-radius: 6px;
+  }

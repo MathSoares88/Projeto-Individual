@@ -68,7 +68,18 @@ const questions = [
     }
   }
   
-  
+  function get(houses){
+    const idCasa = {
+      "Grifinória": "Grifinória",
+      "Lufa-Lufa": "Lufa-Lufa",
+      "Sonseria": "Sonserina",
+      "Corvinal": "Corivinal"
+    };
+
+    return idCasa[houses]
+  }
+
+
   function showResult() {
     let maxPoints = -1;
     let winningHouse = "";
@@ -79,6 +90,8 @@ const questions = [
         winningHouse = house;
       }
     }
+
+    
   
     const houseDetail = houseDetails[winningHouse];
     resultElement.innerHTML = `

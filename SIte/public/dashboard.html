@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div id="resultado"></div>
+        <aside>
+            <nav>
+                <div class="sidebar-top">
+                    <div class="logo_wrapper">
+                        <svg xmls="http://www.w3.org/2000/svg" class="logo" width="180" height="180"
+                            viewBox="0 0 180 180" fill="none">
+                        </svg>
+                        <center>
+                            <h1 class="hide">Harry Potter</h1>
+                        </center>
+                    </div>
+                    <div class="expand-bnt">
+                        <svg xmls="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            stroke-width="2" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        </svg>
+                    </div>
+                </div>
+                <div class="sidebar-links">
+                    <ul>
+                        <li>
+                            <a href="#dashboard" title="Dashboard">
+                                <svg xmls="http://www.w3.org/200/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    stroke-width="2" stroke="#91959C" fill="none" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v240z" fill="none"></path>
+                                    <path d="M4 4h6v8h-6z"></path>
+                                    <path d="M4 16h6v4h-6z"></path>
+                                    <path d="M14 12h6v8h-6z"></path>
+                                    <path d="M14 4h6v4h-6z"></path>
+                                </svg>
+                                <span class="link hide">Dashboard</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="sidebar-links sidebar-bottom">
+                    <div class="divider"></div>
+                    <ul>
+                        <li>
+                            <a href="#help">
+                                <svg xmls="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    stroke-width="2" stroke="#91959C" fill="none" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M3 12a9 9 0 1 0 18 0a9 0 0 0 -18 0"></path>
+                                    <path d="M12 16h.01"></path>
+                                    <path d="M12 13a2 2 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483"></path>
+                                </svg>
+                                <span class="link hide">Help</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="divider"></div>
+                    <div class="sidebar">
+                        <div class="avatar_wrapper">
+                            <img class="avatar" src="" alt="avatar">
+                            <div class="online_status"></div>
+                        </div>
+                        <section class="avatar_name hide">
+                            <div class="user-name">Matheus</div>
+                            <div class="email">mathues.ssoares@sptech.school</div>
+                        </section>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <div id="dashboard">
+            <h2>KPIs e Gráficos</h2>
+            <div class="container-kpi">
+                <div class="kpi-section">
+                    <h2 class="h2">Parabéns, Bruxo(a)! O Mundo Mágico te Espera!</h2>
+                </div>
+
+                <div class="kpi-section2">     
+                    <p id="resultado-quiz"></p>
+                  <div id="Grifinória"><p>Grafinória</p></div>
+                    <div id="Lufa-Lufa"><p>Lufa-Lufa</p></div>
+                    <div id="Sonserina"><p>Sonserina</p></div>
+                    <div id="Corvinal"><p>Corvinal</p></div>
+                </div>
+
+
+                
+                <div class="kpi-section3"></div>
+                <div class="graph-section">
+
+                </div>
+            </div>
+
+            <section class="sessao">
+                <div class="grafico1"></div>
+                <div class="grafico2"></div>
+            </section>
+
+
+
+        </div>
+
+    </div>
+
+
+
+    <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/quiz.js"></script>
+</body>
+
+</html>
+
+<script>
+    let houseDetail = JSON.parse(localStorage.getItem('winningHouse'));
+
+    document.querySelector('.kpi-section2').innerHTML += `<b> #${winnigHouse}`;
+
+    const idCasa = get(houseDetail);
+    const elementoCasa = document.getElementById(idCasa);
+    elementoCasa.style.display = "flex";
+
+    fundoElement.style.display = "none";
+
+    localStorage.setItem('houseDetail', JSON.stringify(houseDetail));
+</script>
