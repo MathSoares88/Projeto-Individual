@@ -5,7 +5,9 @@ body {
     background-color: #171422;
 }
 
-
+html, body{
+    scroll-behavior: smooth;
+}
 
 .nav-bar{
     display: flex;

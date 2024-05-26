@@ -9,7 +9,12 @@
 </head>
 
 <body>
-    <div class="container">
+    <div id="gif-container" class="gif-container">
+        <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3hkNWRsczN2Zjg2NzI5cWw1cGZ2NTRxaWowOXJxNWxmYWhjMnQyNCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/L18xFF5nxvskcp7RIO/giphy.gif" alt="Carregando..." id="loading-gif">
+    </div>
+   
+    <div id="cadastro-container" class="container" style="display: none;">
+     
         <div class="cadastro-box">
             <h1>Cadastre-se</h1>
             <hr>
@@ -20,7 +25,6 @@
                             <label for="nome">Nome:</label>
                             <input id="nome" type="text" required>
                         </div>
-
                         <div class="col">
                             <label for="sobrenome">Sobrenome:</label>
                             <input id="sobrenome" type="text" required>
@@ -43,27 +47,11 @@
                 <button class="button" type="button" onclick="Cadastrar()">Cadastrar</button>
             </form>
             <hr>
-           <h1 class="footer-text">Já possui cadastro?</h1>
-           <a href="./TelaLogin.html"> <button class="buttonLog" onclick="Login()">Log in</button></a>
+            <h1 class="footer-text">Já possui cadastro?</h1>
+            <a href="./TelaLogin.html"><button class="buttonLog" onclick="Login()">Log in</button></a>
         </div>
-       
-        <script>
-            function Cadastrar(){
-                let email = (input_email.value);
-                let senha = (input_senha.value);
-                let nome = (nome.toLowerCase().value);
+    </div>
+    <script src="../assets/js/TelaCadastro.js"></script>
+</body>
 
-                let emailSanitizado = email.toLowerCase().trim();
-
-                if (!emailSanitizado) {
-                alert(`Insira um email válido`)
-            }
-            if(!senha){
-                alert(`Ìnsira uma senha válida`)
-            }
-                if(senha.length < 8){
-                    alert(`A senha deve ter pelo menos 8 caracteres`)
-                }
-            }
-            
-        </script>
+</html>

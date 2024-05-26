@@ -17,19 +17,31 @@ const questions = [
   const houseDetails = {
     "Grifinória":{
       description: "Seja bem-vindo(a), bravo(a) Grifinório(a)! Nosso emblema é o leão, símbolo de coragem e força. As cores da nossa casa são vermelho e dourado, e nossa sala comunal está localizada na Torre da Grifinória, o ponto mais alto do castelo. De nossas janelas, você poderá contemplar a vista deslumbrante da Floresta Proibida e do campo de Quadribol. Grifinórios são conhecidos por sua bravura, cavalheirismo e espírito aventureiro. Valorizamos a honra, a lealdade e a luta pelo que é certo. Se você é um(a) Grifinório(a), se sentirá em casa entre nossos colegas corajosos e cheios de espírito",
-      image: "https://i.pinimg.com/564x/82/04/ea/8204ea042942521912eadc98dff6c120.jpg" 
+      dashboardDescription: "Grifinória",
+      dashImg: "https://i.pinimg.com/564x/1b/c6/7d/1bc67d4972adf22dc1284c5bb836181f.jpg",
+      image: "https://i.pinimg.com/564x/82/04/ea/8204ea042942521912eadc98dff6c120.jpg"
+      
     },
     "Corvinal":{
       description: "Seja bem-vindo(a), inquisitivo(a) Corvinal! Nosso emblema é a águia, representando inteligência e sabedoria. As cores da nossa casa são azul e bronze, e nossa sala comunal está localizada na Torre da Corvinal, um lugar de contemplação tranquila e atividades acadêmicas. De nossas janelas, temos uma vista panorâmica das montanhas circundantes e do lago de Hogwarts. Corvinais são conhecidos por sua sagacidade, criatividade e sede de conhecimento. Valorizamos o aprendizado, a compreensão e a expressão de nossas perspectivas únicas. Se você é um(a) Corvinal, irá prosperar em nosso ambiente intelectualmente estimulante.",
+      dashboardDescription: "Corvinal",
+      dashImg: "https://i.pinimg.com/564x/0a/30/36/0a3036de15e04cf318e8d0993e2b26da.jpg",
       image: "https://i.pinimg.com/564x/32/20/5e/32205e6848ec7a1cacab0e058a51bcfe.jpg"
+      
     },
     "Sonserina":{
       description: "Parabéns! Nosso emblema é a serpente, a mais sábia das criaturas;Nossas cores da casa são verde esmeralda e prata, e nossa sala comum fica atrás de uma entrada escondida nas masmorras. Como você verá, suas janelas têm vista para as profundezas do lago de Hogwarts. Muitas vezes vemos as lulas gigantes passando – e às vezes criaturas mais interessantes. Gostamos de sentir que o nosso ponto de encontro tem a aura de um misterioso",
+      dashboardDescription: "Sonserina",
+      dashImg: "https://i.pinimg.com/564x/84/6a/82/846a824861eaeb41cf05622598381edb.jpg",
       image: "https://i.pinimg.com/564x/84/df/83/84df83df7fbb8208c82d00130956557b.jpg"
+  
     },
     "Lufa-Lufa":{
       description: "Seja bem-vindo(a), leal Lufa-Lufa! Nosso emblema é o texugo, simbolizando trabalho duro e dedicação. As cores da nossa casa são amarelo e preto, e nossa sala comunal está localizada no aconchegante porão da Lufa-Lufa, um lugar de calor e camaradagem. De nossas janelas, podemos ver os jardins da Lufa-Lufa, um refúgio para amantes da natureza e criaturas amigáveis. Lufa-Lufanos são conhecidos por sua gentileza, lealdade e natureza trabalhadora. Valorizamos a justiça, a paciência e o auxílio aos outros. Se você é um(a) Lufa-Lufa, encontrará um lar acolhedor e solidário entre nossos colegas gentis e compassivos.",
+      dashboardDescription: "Lufa-Lufa",
+      dashImg: "https://i.pinimg.com/564x/67/a7/ee/67a7ee1a4397aff71069a1bb6e42669e.jpg",
       image: "https://i.pinimg.com/564x/c6/3b/c8/c63bc8095f4da9ab4d6e07ab4c6eb978.jpg"
+      
     }
   }
 
@@ -99,6 +111,8 @@ const questions = [
     <p>${houseDetail.description}</p>
     <img src="${houseDetail.image}" alt="${winningHouse}" style= "width: 500px; height: 500px;">`;
 
+    localStorage.setItem('winningHouse', JSON.stringify(winningHouse));
+    localStorage.setItem('houseDetail', JSON.stringify(houseDetail));
 
     nextButton.style.display = "none";
   }

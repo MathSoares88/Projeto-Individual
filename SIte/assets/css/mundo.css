@@ -1,0 +1,172 @@
+.tituloMundo{
+    position: absolute;
+    margin: -80px auto 0 auto;
+   background-color: #10141B;
+    height: 150px;
+    width: 100%;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFF;
+    font-family: 'Manrope', sans-serif;
+}
+
+.SobreMundo{
+    font-size: 40px;
+    color: #D2AA6B;
+}
+
+.mundo{
+    display: flex;
+   
+}
+
+.livros{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+:root {
+    --card-height: 300px;
+    --card-width: calc(var(--card-height) / 1.5);
+  }
+ 
+  .card-world {
+    width: var(--card-width);
+    height: var(--card-height);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    padding: 0 36px;
+    perspective: 2500px;
+    margin: 0 50px;
+    position: relative;
+  }
+  
+  .cover-image-world {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    
+  }
+  
+  .wrapper-world {
+    transition: all 0.5s;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+  }
+  
+  .card:hover .wrapper-world {
+    transform: perspective(900px) translateY(-5%) rotateX(25deg) translateZ(0);
+    box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+  }
+  
+  .wrapper-world::before,
+  .wrapper-world::after {
+    content: "";
+    opacity: 0;
+    width: 100%;
+    height: 90px;
+    transition: all 0.5s;
+    position: absolute;
+    left: 0;
+  }
+  .wrapper-world::before {
+    top: 0;
+    height: 100%;
+    background-image: linear-gradient(
+      to top,
+      transparent 46%,
+      rgba(12, 13, 19, 0.5) 68%,
+      rgba(12, 13, 19) 97%
+    );
+    
+  }
+  .wrapper-world::after {
+    bottom: 0;
+    opacity: 1;
+    background-image: linear-gradient(
+      to bottom,
+      transparent 46%,
+      rgba(12, 13, 19, 0.5) 68%,
+      rgba(12, 13, 19) 97%
+    );
+  }
+  
+  .card-world:hover .wrapper-world::before,
+  .wrapper-world::after {
+    opacity: 1;
+  }
+  
+  .card-world:hover .wrapper-world::after {
+    height: 120px;
+  }
+  .title-world {
+    width: 100%;
+    transition: transform 0.5s;
+  }
+  .cardv:hover .title-world {
+    transform: translate3d(0%, -50px, 100px);
+  }
+  
+  .character-world {
+    width: 100%;
+    opacity: 0;
+    transition: all 0.5s;
+    z-index: -1;
+    padding: 0;
+    margin-bottom: 10px;
+  }
+  
+  .card-world:hover .character-world {
+    opacity: 1;
+    transform: translate3d(0%, -30%, 100px);
+    padding: 0;
+  }
+  
+.livros3{
+    display: flex;
+    justify-content: space-around ;
+    margin-top: 140px;
+  }
+
+.livros3 .card-world{
+  margin: 0 10px;
+}
+/* -------------------------------------------- ----------------*/
+
+.character-worldB {
+  width: 100%;
+  opacity: 0;
+  transition: all 0.5s;
+  z-index: -1;
+  padding: 0;
+  margin-bottom: 10px;
+  height: 30px;
+  border-radius: 6px;
+  text-decoration: none;
+  background-color: #D2AA6B;
+  border: 2px solid #D2AA6B;
+  font-family: 'Lumos', sans-serif;
+  font-size: 15px;
+}
+
+@font-face {
+  font-family: 'Lumos';
+  src: url('caminho/para/o/arquivo/lumos.ttf') format('truetype');
+}
+
+.card-world:hover .character-worldB {
+  opacity: 1;
+  transform: translate3d(0%, -30%, 100px);
+  padding: 0;
+}

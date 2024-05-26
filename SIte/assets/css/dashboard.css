@@ -19,6 +19,22 @@ body {
     font-family: Mulish;
   }
   
+  body.grifinoria{
+    background-color: #481011;
+  }
+
+  body.corvinal{
+    background-color: #0C1B32;
+  }
+
+  body.sonserina{
+    background-color: #1A2C1E;
+  }
+
+  body.lufalufa{
+    background-color: #FFD302;
+  }
+
   /* Barra lateral superior */
   .sidebar-top {
     text: white;
@@ -277,9 +293,28 @@ body {
     width: 200px;
     height: 210px;
     margin-left: 35px;
-    background-color: purple;
     border-radius: 6px; 
+    position: relative;
     
+  }
+
+  #dashImg{
+    display: block;
+    width: 100%;
+    height: 90%;
+    border-radius: 6px;
+  }
+
+  #resultado-quiz{
+    position: absolute; /* Posicionamento absoluto dentro do contêiner */
+    top: 50%; /* Ajusta a posição vertical (50% do topo) */
+    left: 50%; /* Ajusta a posição horizontal (50% da esquerda) */
+    transform: translate(-50%, -50%); /* Centraliza o texto */
+    color: white; /* Cor do texto */
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
+    padding: 10px; /* Espaçamento interno do texto */
+    border-radius: 5px; /* Bordas arredondadas (opcional) */
+    margin-top: 95px;
   }
 
   .kpi-section3{
@@ -289,7 +324,7 @@ body {
     margin-left: 35px;
     background-color: purple;
     border-radius: 6px; 
-    
+    position: relative;
   }
 
   .sessao{
@@ -314,3 +349,5 @@ body {
     margin-top: 1rem;
     border-radius: 6px;
   }
+
+  
