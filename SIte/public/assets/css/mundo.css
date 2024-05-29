@@ -144,7 +144,7 @@
 }
 /* -------------------------------------------- ----------------*/
 
-.character-worldB {
+.character-worldB  {
   width: 100%;
   opacity: 0;
   transition: all 0.5s;
@@ -158,6 +158,7 @@
   border: 2px solid #D2AA6B;
   font-family: 'Lumos', sans-serif;
   font-size: 15px;
+  
 }
 
 @font-face {
@@ -170,3 +171,4 @@
   transform: translate3d(0%, -30%, 100px);
   padding: 0;
 }
+

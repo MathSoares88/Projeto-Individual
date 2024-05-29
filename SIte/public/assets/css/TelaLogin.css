@@ -1,82 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600&display=swap');
 
-.imagem-left{
-    /* width: 360px;
-    height: 640px;
-    border-radius: 6px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 2px;
-    background-color: #d3d3d3;
-    border: none; */
-    
-    width: 100%;
-    max-width: 400px;
-    border-radius: 10px;
-    text-align: center;
-    height: 639px;
-    
-    box-shadow: 20px 20px 20px 20px rgba(0, 0, 0, 0.1); /* Adiciona a sombra */
-}
-
-
-
 body {
+    background-color: #f0f0f0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
     font-family: 'Fira Sans', sans-serif;
-    background-color: #10141B;
+    background-image: url(https://images.alphacoders.com/121/1219285.jpg);
+   background-size: auto;
 }
-
-.gif-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-    position: fixed;
-    background-color: #000;
-    z-index: 9999;
-}
-
-#loading-gif {
-    width: 70%; /* Tamanho ajustado */
-    height: 70%; /* Tamanho ajustado */
-    border-radius: 10px; /* Bordas arredondadas */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para melhorar a aparência */
-    transition: transform 0.3s ease; /* Transição para animação */
-    margin-bottom: 20px;
-}
-
-
 
 .container {
-    display: none;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-    text-align: center;
-}
-
-.cadastro-box {
     width: 100%;
     max-width: 400px;
-    background-color:  #FFF;
+    padding: 20px;
+}
+
+.log-box {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     text-align: center;
-    
+    opacity: 1;
 }
 
 h1 {
     font-size: 30px;
-    color: black;
+    color: #041122;
     margin-bottom: 20px;
 }
 
@@ -95,7 +47,7 @@ h1 {
 
 .input-group label {
     margin-top: 10px;
-    color: black;
+    color: #041122;
     display: block;
     margin-bottom: 5px;
     margin-left: 5px;
@@ -106,24 +58,24 @@ h1 {
     width: 100%;
     height: 40px;
     padding: 5px 10px;
-    border: 1px solid black;
+    border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
 }
 
-.cadastro-box hr {
+.log-box hr {
     border: 0;
     height: 1px;
-    background-color: black;
+    background-color: #041122;
 }
 
 .input-group input:focus {
     outline: none;
-    border-color: goldenrod;
+    border-color: #007BFF;
 }
 
-.button, .buttonLog {
-    width: 100%;
+.button {
+    width: 23vw;
     height: 47px;
     border: none;
     margin-top: 15px;
@@ -134,20 +86,33 @@ h1 {
     transition: 0.2s all;
     border-radius: 18px;
     font-size: 15px;
-    font-family: "Fira Sans", sans-serif;
+    font-family: 'Fira Sans', sans-serif;
     text-decoration: none;
 }
 
-.buttonLog {
-    background-color: #6B63B5;
-    border: none ;
-    color: black;
-}
+.cadastro {
+    width: 23vw;
+    height: 47px;
+    border: 2px solid white;
+    margin-top: 15px;
+    opacity: 1;
+   background-color: transparent;
+   cursor: pointer;
+    color: #FFF;
+    cursor: pointer;
+    font-weight: bolder;
+    transition: 0.2s all;
+    border-radius: 5px;
+    border-radius: 18px;
+    font-size: 15px;
+    font-family: "Fira Sans", sans-serif;
+    text-decoration: none;
+  }
 
-.buttonLog:hover {
-    background-color: #312a73;
+.cadastro:hover {
+    background-color: white;
     color: #000;
-    border: none;
+    border: 2px solid #000;
 }
 
 .button:hover {
@@ -156,9 +121,9 @@ h1 {
 
 .footer-text {
     margin: 20px 0;
-    color: black;
+    color: #041122;
     font-size: 21px;
-    font-family: "Fira Sans", sans-serif;
+    font-family: 'Fira Sans', sans-serif;
 }
 
 .modal {
@@ -204,3 +169,4 @@ h1 {
     color: #333;
     font-size: 14px;
 }
+

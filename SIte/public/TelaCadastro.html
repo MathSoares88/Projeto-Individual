@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
@@ -14,44 +13,179 @@
     </div>
    
     <div id="cadastro-container" class="container" style="display: none;">
-     
         <div class="cadastro-box">
             <h1>Cadastre-se</h1>
             <hr>
-            <form id="form_cadastrar_monitor" action="/cadastro" method="POST">
+            <div id="form_cadastrar_monitor">
                 <div class="input-group">
                     <div class="row">
                         <div class="col">
                             <label for="nome">Nome:</label>
-                            <input id="nome" type="text" required>
+                            <input id="nome" name="nome" type="text" required>
                         </div>
                         <div class="col">
                             <label for="sobrenome">Sobrenome:</label>
-                            <input id="sobrenome" type="text" required>
+                            <input id="sobrenome" name="sobrenome" type="text" required>
                         </div>
                     </div>
                 </div>
-
                 <div class="input-group">
                     <label for="input_email">Email:</label>
-                    <input id="input_email" type="email" required>
+                    <input id="input_email" name="email" type="email" required>
                 </div>
                 <div class="input-group">
                     <label for="input_senha">Senha:</label>
-                    <input id="input_senha" type="password" required>
+                    <input id="input_senha" name="senha" type="password" required>
                 </div>
                 <div class="input-group">
                     <label for="dtaniversario">Data do aniversário:</label>
                     <input id="dtaniversario" name="aniversario" type="date" required>
                 </div>
-                <button class="button" type="button" onclick="Cadastrar()">Cadastrar</button>
+                <button onclick="cadastrar()" class="button" type="button">Cadastrar</button>
             </form>
             <hr>
             <h1 class="footer-text">Já possui cadastro?</h1>
-            <a href="./TelaLogin.html"><button class="buttonLog" onclick="Login()">Log in</button></a>
+            <a href="./TelaLogin.html"><button class="buttonLog">Log in</button></a>
         </div>
     </div>
+  <!-- Modal para exibir mensagens de erro -->
+  <div id="modal-erros" class="modal">
+    <div class="modal-content">
+        <div class="header-modal-erro">
+            <h2>Erros no cadastro</h2>
+        </div>
+        <div class="modal-erros" id="modal-messages">
+            <!-- Mensagens de erro serão inseridas aqui -->
+        </div>
+        <button onclick="fecharModal()">Fechar</button>
+    </div>
+</div>
+
     <script src="../assets/js/TelaCadastro.js"></script>
+    <div id="resultado"></div>
 </body>
 
 </html>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    function cadastrar(event){
+
+        let nome = document.getElementById("nome").value;
+            let sobrenome = document.getElementById("sobrenome").value;
+            let email = document.getElementById("input_email").value;
+            let senha = document.getElementById("input_senha").value;
+            let aniversario = document.getElementById("dtaniversario").value;
+            let contemErro = false;
+            let messages = document.getElementById("modal-messages");
+            messages.innerHTML = "";
+
+            if (nome.length < 2) {
+                messages.innerHTML += `<p><span style="color: red;">&bull;&nbsp;</span>O nome deve ter pelo menos 2 caracteres!</p>`;
+                contemErro = true;
+            }
+            if (sobrenome.length < 2) {
+                messages.innerHTML += `<p><span style="color: red;">&bull;&nbsp;</span>O sobrenome deve ter pelo menos 2 caracteres!</p>`;
+                contemErro = true;
+            }
+            if (email.indexOf('@') <= 0 || email.lastIndexOf('.') <= email.indexOf('@') + 1) {
+                messages.innerHTML += `<p><span style="color: red;">&bull;&nbsp;</span>O endereço de Email é inválido!</p>`;
+                contemErro = true;
+            }
+
+            // Validação da senha
+            if (senha.length < 8 || senha.length > 16) {
+                messages.innerHTML += `<p><span style="color: red;">&bull;&nbsp;</span>A senha deve ter entre 8 e 16 caracteres!</p>`;
+                contemErro = true;
+            }
+
+            let contemNum = /\d/.test(senha); // Verifica se a senha contém pelo menos um número
+
+            if (!contemNum) {
+                messages.innerHTML += `<p><span style="color: red;">&bull;&nbsp;</span>A senha deve conter pelo menos um número!</p>`;
+                contemErro = true;
+            }
+
+            // Validação da data de aniversário
+            let aniversarioDate = new Date(aniversario);
+            let hoje = new Date();
+            let idade = hoje.getFullYear() - aniversarioDate.getFullYear();
+            let mes = hoje.getMonth() - aniversarioDate.getMonth();
+
+            if (mes < 0 || (mes === 0 && hoje.getDate() < aniversarioDate.getDate())) {
+                idade--;
+            }
+
+            if (idade < 18) {
+                messages.innerHTML += `<p><span style="color: red;">&bull;&nbsp;</span>Você deve ter pelo menos 18 anos para se cadastrar!</p>`;
+                contemErro = true;
+            }
+            Swal.fire({
+  position: "top-end",
+  icon: "success",
+  title: "Your work has been saved",
+  showConfirmButton: false,
+  timer: 1500
+});
+
+
+setTimeout(function () {
+                                // Depois levar para a dashboard
+                                window.location = "./TelaLogin.html";
+                            }, 1000); // apenas para exibir o loading
+
+            if (contemErro) {
+                // Se houver erros, exiba o modal
+                document.getElementById("modal-erros").style.display = 'flex';
+            } else {
+                // Se não houver erros, submeta o formulário
+               
+                // Enviando o valor da nova input
+                fetch("/usuarios/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    nomeServer: nome,
+                    sobrenomeServer: sobrenome,
+                    emailServer: email,
+                    senhaServer: senha,
+                    aniversarioServer: aniversario
+                    
+
+                }),
+                })
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
+
+                    if (resposta.ok) {
+                    cardErro.style.display = "block";
+
+                    mensagem_erro.innerHTML =
+                        "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                    setTimeout(() => {
+                        window.location = "login.html";
+                    }, "2000");
+
+                    } else {
+                    throw "Houve um erro ao tentar realizar o cadastro!";
+                    }
+                })
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+                });
+            }
+        
+            function fecharModal() {
+            document.getElementById("modal-erros").style.display = 'none';
+        }
+ // Função para esconder o gif de carregamento e exibir o formulário (exemplo)
+ document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('gif-container').style.display = 'none';
+            document.getElementById('cadastro-container').style.display = 'block';
+        });
+    }
+</script>

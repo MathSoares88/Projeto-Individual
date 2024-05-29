@@ -25,8 +25,9 @@ html, body{
 .nav-list{
     display: flex;
     flex-direction: row;
-    gap: 45px;
+    gap: 20px;
     list-style: none;
+    
 }
 .nav-link{
     text-decoration: none;
@@ -35,6 +36,8 @@ html, body{
     font-weight: bolder;
     color: #afafaf;
     transition: 0.3s;
+    margin-right: 20px;
+    
 }
 
 .nav-link:hover{
@@ -69,6 +72,7 @@ html, body{
     object-fit: cover;
     margin-right: 22px;
 }
+
 .h1Home, .pHome{
     flex-direction: column;
     margin: 0;

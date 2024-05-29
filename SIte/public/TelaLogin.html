@@ -13,66 +13,123 @@
         <div class="log-box">
             <h1>Login</h1>
             <hr>
-            <form id="form_login_monitor" action="/login" method="POST">
+            <div id="form_login_monitor">
                 <div class="input-group">
                     <label for="input_email">Email:</label>
-                    <input id="input_email" type="email" required>
+                    <input id="input_email" name="email" type="email" required>
                 </div>
                 <div class="input-group">
                     <label for="input_senha">Senha:</label>
-                    <input id="input_senha" type="password" required>
-                    <center>
-             <button class="button" type="button" onclick="Login()">Login</button>
-            </form>
+                    <input id="input_senha" name="senha" type="password" required>
+                </div>
+                
+                    <button class="button" type="button" onclick="login()">>Login</button>
+            </div>
             <hr>
-           <h1 class="footer-text">Não possui Cadastro?</h1>
-           <a href="./TelaCadastro.html"> <button class="cadastro" type="button" onclick="cadastro()">Cadastre-se</button></a>
-        </center>
-        </div>    
-        <span id="tela"></span>
-        </body>
+            <h1 class="footer-text">Não possui Cadastro?</h1>
+            <a href="./TelaCadastro.html">
+                <button class="cadastro" type="button">Cadastre-se</button>
+            </a>
+            <span id="tela"></span>
+        </div>
+    </div>
+    <script src="./assets/js/TelaLogin.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
 
-        <script>
-            function Login(){
-                let email = (input_email.value);
-                let senha = (input_senha.value);
+    <script>
+        function login(event) {
+           
 
-                let emailSanitizado = email.toLowerCase().trim();
+            let email = document.getElementById("input_email").value;
+            let senha = document.getElementById("input_senha").value;
+            let contemErro = false;
+            let tela = document.getElementById("tela");
 
-                if (!emailSanitizado || !senha) {
-                alert('Email ou Senha inválidos');
-                return false;
-            }
-                if(senha.length < 8){
-                    alert(`A senha deve ter pelo menos 8 caracteres`)
+            tela.innerHTML = ""; // Limpa as mensagens de erro anteriores
+
+            // Validação do email
+            if (email !== "" && senha !== "") {
+                if (email.indexOf('@') <= 0 || email.lastIndexOf('.') <= email.indexOf('@') + 1) {
+                    tela.innerHTML += `<p><span style="color: red;">&bull;&nbsp;</span>O endereço de Email é invalido!</p>`;
+                    contemErro = true;
+                }
+
+                // Validação da senha
+                if (senha.length < 8 || senha.length > 16) {
+                    tela.innerHTML += `<p><span style="color: red;">&bull;&nbsp;</span>A senha deve ter entre 8 e 16 caracteres!</p>`;
+                    contemErro = true;
+                }
+
+                let contemNum = /\d/.test(senha); // Verifica se a senha contém pelo menos um número
+
+                if (!contemNum) {
+                    tela.innerHTML += `<p><span style="color: red;">&bull;&nbsp;</span>A senha deve conter pelo menos um número!</p>`;
+                    contemErro = true;
+                }
+
+                if (!contemErro) {
+                    // Se não houver erros, submeta o formulário
+                    fetch("/usuarios/autenticar", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        emailServer: email,
+                        senhaServer: senha
+                    })
+                }).then(function (resposta) {
+                    console.log("ESTOU NO THEN DO entrar()!")
+
+                    if (resposta.ok) {
+                        console.log(resposta);
+
+                        resposta.json().then(json => {
+                            console.log(json);
+                            console.log(JSON.stringify(json));
+                            sessionStorage.EMAIL_USUARIO = json.email;
+                            sessionStorage.NOME_USUARIO = json.nome;
+                            sessionStorage.ID_USUARIO = json.id;
+                            sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+
+                            setTimeout(function () {
+                                // Depois levar para a dashboard
+                                window.location = "./index.html";
+                            }, 1000); // apenas para exibir o loading
+
+                        });
+                        
+
+                    } else {
+
+                        console.log("Houve um erro ao tentar realizar o login!");
+
+                        resposta.text().then(texto => {
+                            console.error(texto);
+                            finalizarAguardar(texto);
+                        });
+                    }
+
+                }).catch(function (erro) {
+                    console.log(erro);
+                })
+
                 }
             }
 
+            console.log("FORM LOGIN: ", email);
+        console.log("FORM SENHA: ", senha);
 
-            const urlParams = new URLSearchParams(window.location.search);
-            const nextPage = urlParams.get('redirect_to');
+ 
+        return false;
+    }
 
-            if (redirectTo) {
-                window.location.href = 'quiz,html';
-            } else {
-                window.location.href = 'index.html'; // Substitua 'home.html' pela URL da página inicial
-            }
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
 
+    </script>
+</body>
 
-
-
-            function validateEmail(email) {
-            // Expressão regular para validar email
-            var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return re.test(email);
-        }
-
-        // Função para validar a complexidade da senha
-        function validatePassword(password) {
-            // Expressão regular para senha (mínimo 8 caracteres, pelo menos uma letra maiúscula, uma minúscula e um número)
-            var re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
-            return re.test(password);
-        }
-        </script>
-       
-        
+</html>
