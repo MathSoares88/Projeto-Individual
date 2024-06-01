@@ -1,0 +1,54 @@
+/* Estilos para o body */
+body {
+    /* opcionalmente você pode definir altura e largura para 100% para garantir que a imagem cubra toda a tela */
+    height: 300vh;
+    width: 100vw;
+    /* opcionalmente você pode remover margens e preenchimento do corpo */
+    margin: 0;
+    padding: 0;
+}
+
+/* Classe para a imagem de fundo */
+.background-image {
+    /* background-color: #153E5E; */
+    background-image: url(https://img.freepik.com/fotos-gratis/derramamentos-de-pigmento-branco_23-2147797831.jpg?w=996&t=st=1717117091~exp=1717117691~hmac=454e9cf958191a2e113b3cbc68e0687ac266009c096ab26866b150137bae1999);
+    background-size: cover; /* Faz a imagem cobrir toda a área do elemento pai */
+    background-repeat: no-repeat; /* Evita que a imagem se repita */
+    /* opcionalmente você pode centralizar a imagem */
+    background-position: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.h1 {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    color: silver;
+}
+
+.patronus-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.patronus-item {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-left: 25px;
+}
+
+.imagemPatrono {
+    height: 300px;
+    width: 300px;
+    border-radius: 8px;
+}

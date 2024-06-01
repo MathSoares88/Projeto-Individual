@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/assets/css/Patrono.css">
+    <title>Document</title>
+</head>
+<body class="background-image">
+    <main class="container">
+        <div class="h1">
+            <h1>Escolha o seu Patrono</h1>
+        </div>
+        <br><br>
+        <!-- Imagens dos Patronos -->
+        <div class="patronus-grid">
+            <div class="patronus-item">
+                <!-- Exemplo de como ficaria o onclick de uma imagem -->
+                <img class="imagemPatrono" src="https://i.pinimg.com/736x/30/c1/c0/30c1c0bfd7fc8180c1a4909266ec6fc6.jpg" alt="Macaco" onclick="selectPatronus('Macaco', 'https://i.pinimg.com/736x/30/c1/c0/30c1c0bfd7fc8180c1a4909266ec6fc6.jpg')">
+            </div>
+            <div class="patronus-item">
+                <img class="imagemPatrono" src="https://i.pinimg.com/564x/39/06/a3/3906a336600dc883f39f9006b2ea4ec2.jpg" alt="Cervo" onclick="selectPatronus('Cervo', 'https://i.pinimg.com/564x/39/06/a3/3906a336600dc883f39f9006b2ea4ec2.jpg')">
+            </div>
+            <div class="patronus-item">
+                <img class="imagemPatrono" src="https://i.pinimg.com/564x/4f/ec/33/4fec333baf8a5c57a976994011731597.jpg" alt="Elefante" onclick="selectPatronus('Elefante', 'https://i.pinimg.com/564x/4f/ec/33/4fec333baf8a5c57a976994011731597.jpg')">
+            </div>
+            <div class="patronus-item">
+                <img class="imagemPatrono" src="https://i.pinimg.com/564x/4e/36/45/4e3645ddd29fdb5de1da2db10611bcc2.jpg" alt="Raposa" onclick="selectPatronus('Raposa', 'https://i.pinimg.com/564x/4e/36/45/4e3645ddd29fdb5de1da2db10611bcc2.jpg')">
+            </div>
+            <div class="patronus-item">
+                <img class="imagemPatrono" src="https://i.pinimg.com/564x/c4/a5/e6/c4a5e6978dc50183eb8d96767a355e1a.jpg" alt="Urso" onclick="selectPatronus('Urso', 'https://i.pinimg.com/564x/c4/a5/e6/c4a5e6978dc50183eb8d96767a355e1a.jpg')">
+            </div>
+            <div class="patronus-item">
+                <img class="imagemPatrono" src="https://i.pinimg.com/564x/24/6a/80/246a80f18ab05d8e34ac5aae88f93776.jpg" alt="Coelho" onclick="selectPatronus('Coelho', 'https://i.pinimg.com/564x/24/6a/80/246a80f18ab05d8e34ac5aae88f93776.jpg')">
+            </div>
+            <div class="patronus-item">
+                <img class="imagemPatrono" src="https://i.pinimg.com/564x/ff/e2/c9/ffe2c9d9eaf079166a932523fba837d7.jpg" alt="Morcego" onclick="selectPatronus('Morcego', 'https://i.pinimg.com/564x/ff/e2/c9/ffe2c9d9eaf079166a932523fba837d7.jpg')">
+            </div>
+            <div class="patronus-item">
+                <img class="imagemPatrono" src="https://i.pinimg.com/564x/3a/97/b8/3a97b8229138d9fa1eeb544ebee0d1e7.jpg" alt="Gato" onclick="selectPatronus('Gato', 'https://i.pinimg.com/564x/3a/97/b8/3a97b8229138d9fa1eeb544ebee0d1e7.jpg')">
+            </div>
+            <div class="patronus-item">
+                <img class="imagemPatrono" src="https://i.pinimg.com/736x/a7/27/d0/a727d04eaf1f190bada362f969f7e7d7.jpg" alt="Coelho" onclick="selectPatronus('Coelho', 'https://i.pinimg.com/736x/a7/27/d0/a727d04eaf1f190bada362f969f7e7d7.jpg')">
+            </div>
+        </div>
+    </main>
+
+<script>
+    function selectPatronus(name, src) {
+    const queryParams = new URLSearchParams();
+    queryParams.append('name', encodeURIComponent(name));
+    queryParams.append('src', encodeURIComponent(src));
+    
+    // Redirecionar para a dashboard com os detalhes do patrono na URL
+    window.location.href = 'dashboard.html?' + queryParams.toString();
+}
+
+</script>
+
+</body>
+</html>

@@ -22,25 +22,36 @@
                     <label for="input_senha">Senha:</label>
                     <input id="input_senha" name="senha" type="password" required>
                 </div>
-                
-                    <button class="button" type="button" onclick="login()">>Login</button>
+                    <button class="button" type="button" onclick="login()">Login</button>
             </div>
             <hr>
-            <h1 class="footer-text">Não possui Cadastro?</h1>
+            <h1 class="footer-text">Ainda não possui Cadastro?</h1>
             <a href="./TelaCadastro.html">
                 <button class="cadastro" type="button">Cadastre-se</button>
             </a>
             <span id="tela"></span>
         </div>
     </div>
+
+ <!-- Exibir mensagem de erro, se der problema tiro depois-->
+    <div id="modal-erros" class="modal">
+        <div class="modal-content">
+            <div class="header-modal-erro">
+                <h2>Erros no login</h2>
+            </div>
+            <div class="modal-erros" id="modal-messages">
+                <!-- Mensagens de erro serão inseridas aqui -->
+            </div>
+            <button onclick="fecharModal()">Fechar</button>
+        </div>
+    </div>
+
     <script src="./assets/js/TelaLogin.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
 
     <script>
         function login(event) {
-           
-
             let email = document.getElementById("input_email").value;
             let senha = document.getElementById("input_senha").value;
             let contemErro = false;
@@ -91,7 +102,9 @@
                             sessionStorage.EMAIL_USUARIO = json.email;
                             sessionStorage.NOME_USUARIO = json.nome;
                             sessionStorage.ID_USUARIO = json.id;
-                            sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+                            sessionStorage.AQUARIOS = JSON.stringify(json.aquarios);
+
+                            localStorage.setItem('username', json.nome);
 
                             setTimeout(function () {
                                 // Depois levar para a dashboard
@@ -130,6 +143,8 @@
     }
 
     </script>
+
+    
 </body>
 
 </html>

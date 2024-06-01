@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Dashboard</title>
     <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="container">
-        <div id="resultado"></div>
         <aside>
             <nav>
                 <div class="sidebar-top">
@@ -16,10 +16,10 @@
                         <svg xmlns="http://www.w3.org/2000/svg" class="logo" width="180" height="180" viewBox="0 0 180 180" fill="none">
                         </svg>
                         <center>
-                            <h1 class="hide">Harry Potter</h1>
+                            <h1 class="hide-text">Harry Potter</h1>
                         </center>
                     </div>
-                    <div class="expand-bnt">
+                    <div class="expand-btn">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         </svg>
                     </div>
@@ -28,13 +28,7 @@
                     <ul>
                         <li>
                             <a href="#dashboard" title="Dashboard">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="#91959C" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                    <path d="M4 4h6v8h-6z"></path>
-                                    <path d="M4 16h6v4h-6z"></path>
-                                    <path d="M14 12h6v8h-6z"></path>
-                                    <path d="M14 4h6v4h-6z"></path>
-                                </svg>
+                                <img src="./assets/icon/icons8-métricas-de-laptop-64.png" alt="">
                                 <span class="link hide">Dashboard</span>
                             </a>
                         </li>
@@ -44,93 +38,264 @@
                     <div class="divider"></div>
                     <ul>
                         <li>
-                            <a href="#help">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="#91959C" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                    <path d="M12 16h.01"></path>
-                                    <path d="M12 13a2 2 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483"></path>
-                                </svg>
-                                <span class="link hide">Help</span>
+                            <a href="./quiz.html">
+                                <img class="iconDashh" src="./assets/icon/icons8-questionário-100.png" alt="">
+                                <span class="link hide">Quiz</span>
                             </a>
                         </li>
                     </ul>
+                    <hr>
+                    <ul>
+                        <li>
+                            <a href="./Patrono.html">
+                                <img class="iconDash" src="./assets/icon/gatoIconjpg-removebg-preview.png" alt="">
+                                <span class="link hide">Patronus</span>
+                            </a>
+                        </li>
+                    </ul>
+                    
                     <div class="divider"></div>
                     <div class="sidebar">
                         <div class="avatar_wrapper">
-                            <img class="avatar" src="" alt="avatar">
+                            <img id="avatar" class="avatar" src="" alt="Sua imagem">
                             <div class="online_status"></div>
+                            <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+                            <button class="uploadButton" id="uploadButton">Adicione sua imagem, Bruxo</button>
                         </div>
-                        <section class="avatar_name hide">
-                            <div class="user-name">Matheus</div>
-                            <div class="email">matheus.ssoares@sptech.school</div>
-                        </section>
                     </div>
                 </div>
             </nav>
         </aside>
         <div id="dashboard">
-            <h2>KPIs e Gráficos</h2>
             <div class="container-kpi">
                 <div class="kpi-section">
-                    <h2 class="h2">Parabéns, Bruxo(a)! O Mundo Mágico te Espera!</h2>
+                    <h2 id="welcomeMessage"></h2>
                 </div>
                 <div class="kpi-section2">
                     <p id="resultado-quiz"></p>
                     <img id="dashImg">
                 </div>
-                <div class="kpi-section3"></div>
-                <div class="graph-section"></div>
+                <div class="Patrono">
+                    <div id="selected-patronus" class="kpi-section3"></div>
+                </div>
             </div>
             <section class="sessao">
-                <div class="grafico1"></div>
-                <div class="grafico2"></div>
+                <div class="grafico1">
+                    <canvas id="houseChart"></canvas>
+                </div>
+                <div class="grafico2">
+                    <h2>Deixe sua Mensagem</h2>
+                    <textarea id="mensagemInput" placeholder="Escreva sua mensagem aqui..."></textarea>
+                    <button id="enviarMensagem">Enviar</button>
+                    <div id="mensagemContainer"></div>
+                </div>
             </section>
         </div>
     </div>
 
     <script src="../assets/js/script.js"></script>
     <script src="../assets/js/quiz.js"></script>
-
     <script>
         document.addEventListener("DOMContentLoaded", function () {
+            // Casas
+            const userName = localStorage.getItem('username');
+            const welcomeMessageElement = document.getElementById('welcomeMessage');
+            // Patrono
+            const patronusSection = document.getElementById('selected-patronus');
+            // Botão
+            const sendMessageButton = document.getElementById('sendMessageButton');
+    const messageInput = document.getElementById('messageInput');
+    const messageContainer = document.getElementById('messageContainer');
+
+            // patronusContainer.appendChild(patronusSection);
+
+            const queryParams = new URLSearchParams(window.location.search);
+            const name = queryParams.get('name');
+            const src = queryParams.get('src');
+
+            if (userName) {
+                welcomeMessageElement.textContent = `Parabéns, ${userName}! O Mundo Mágico te Espera!`;
+            }
+
             const houseDetail = JSON.parse(localStorage.getItem('houseDetail'));
             const winningHouse = JSON.parse(localStorage.getItem('winningHouse'));
-           
+
+            if (name && src) {
+                patronusSection.innerHTML = `
+                    <h2>Seu Patrono Escolhido:</h2>
+                    <img src="${decodeURIComponent(src)}" alt="${decodeURIComponent(name)}" class="imagemPatrono">
+                    
+                `;
+            }
 
             if (houseDetail && winningHouse) {
-
-                
+                welcomeMessageElement.innerHTML = `Parábens, ${userName}! O Mundo Mágico te Espera!<br> Bem vindo a sua casa ${winningHouse}. <br> 
+                Aqui você se desenvolverá, aprenderá feitiços e descobrirá os segredos mais profundos da magia.<br> 
+                Prepare-se, erga sua varinha e vamos explorar esse mundo de magias juntos.`;
 
                 const resultadoQuizElement = document.getElementById('resultado-quiz');
                 resultadoQuizElement.innerHTML = `<b>${winningHouse}</b>`;
                 const dashImgElement = document.getElementById('dashImg');
-
-                resultadoQuizElement.innerHTML = `<b>${winningHouse}</b>`;
                 dashImgElement.src = houseDetail.dashImg;
 
                 document.body.classList.remove('grifinoria', 'corvinal', 'sonserina', 'lufalufa');
 
                 switch (winningHouse.toLowerCase()) {
-            case 'grifinória':
-                document.body.classList.add('grifinoria');
-                break;
-            case 'corvinal':
-                document.body.classList.add('corvinal');
-                break;
-            case 'sonserina':
-                document.body.classList.add('sonserina');
-                break;
-            case 'lufa-lufa':
-                document.body.classList.add('lufalufa');
-                break;
-        }
-
-                const elementoCasa = document.getElementById(winningHouse);
-                if (elementoCasa) {
-                    elementoCasa.style.display = "flex";
+                    case 'grifinória':
+                        document.body.classList.add('grifinoria');
+                        break;
+                    case 'corvinal':
+                        document.body.classList.add('corvinal');
+                        break;
+                    case 'sonserina':
+                        document.body.classList.add('sonserina');
+                        break;
+                    case 'lufa-lufa':
+                        document.body.classList.add('lufalufa');
+                        break;
                 }
             }
+
+            document.getElementById('uploadButton').addEventListener('click', function() {
+                document.getElementById('imageUpload').click();
+            });
+
+            document.getElementById('imageUpload').addEventListener('change', function(event) {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.getElementById('avatar').src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
         });
+
+
+
+        const ctx = document.getElementById('houseChart').getContext('2d');
+            const houseData = {
+                labels: ['Grifinória', 'Corvinal', 'Sonserina', 'Lufa-Lufa'],
+                datasets: [{
+                    label: 'Porcentagem de Perguntas Respondidas',
+                    data: [0, 0, 0, 0], // Valores iniciais
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(255, 206, 86, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(255, 206, 86, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            };
+
+            const houseChart = new Chart(ctx, {
+                type: 'bar',
+                data: houseData,
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            // Carregar os dados reais
+            fetch(`/quiz/getResult?userId=${sessionStorage.ID_USUARIO}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data && data.percentages) {
+                        const percentages = data[0].percentages;
+                        houseChart.data.datasets[0].data = data.percentages;
+                        houseChart.update();
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro ao obter resultado do quiz:', error);
+
+                });
+
+                document.getElementById('enviarMensagem').addEventListener('click', function () {
+    const messageText = document.getElementById('mensagemInput').value.trim();
+    if (messageText !== "") {
+        addMessage(messageText);
+        document.getElementById('mensagemInput').value = "";
+
+        // Enviar a mensagem para o servidor
+        fetch('/messages/save', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                userId: sessionStorage.getItem('ID_USUARIO'),
+                message: messageText
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Mensagem salva com sucesso:', data);
+        })
+        .catch(error => {
+            console.error('Erro ao salvar mensagem:', error);
+        });
+    }
+});
+
+function addMessage(text) {
+    const messageElement = document.createElement('div');
+    messageElement.classList.add('message');
+    messageElement.textContent = text;
+    document.getElementById('mensagemContainer').appendChild(messageElement);
+}
+        
+
+// const sendMessageButton = document.getElementById('sendMessageButton');
+// const messageInput = document.getElementById('messageInput');
+// const messageContainer = document.getElementById('messageContainer');
+
+// sendMessageButton.addEventListener('click', function () {
+//     const messageText = messageInput.value.trim();
+//     if (messageText !== "") {
+//         addMessage(messageText);
+//         messageInput.value = "";
+//     }
+// });
+
+// function addMessage(text) {
+//     const messageElement = document.createElement('div');
+//     messageElement.classList.add('message');
+    
+//     const contentElement = document.createElement('div');
+// }
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </script>
 </body>
 </html>

@@ -273,10 +273,10 @@ body {
 }
   .kpi-section{
     display: flex;
+    margin-top: 20px;
     width: 600px;
     height: 210px;
     margin-left: 40px;
-    background-color: purple;
     border-radius: 6px;
     gap: -30px;
   }
@@ -290,6 +290,7 @@ body {
 
   .kpi-section2{
     display: flex;
+    margin-top: 20px;
     width: 200px;
     height: 210px;
     margin-left: 35px;
@@ -319,35 +320,216 @@ body {
 
   .kpi-section3{
     display: flex;
+    flex-direction: column;
     width: 200px;
     height: 210px;
     margin-left: 35px;
-    background-color: purple;
     border-radius: 6px; 
     position: relative;
+    box-sizing: border-box;
+    margin-bottom: 70px;
   }
+
+  /* .bntPatrono{
+    padding: 10px 20px;
+            font-size: 14px;
+            color: #fff;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s;
+            margin-left: 53px;
+  }
+
+  .bntPatrono:hover{
+    background-color: #45A049;
+  } */
+
+  #action-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #f39c12;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#action-button:hover {
+    background-color: #e67e22;
+}
+
 
   .sessao{
     display: flex;
-    
   }
 
   .grafico1{
     margin-left: 40px;
-    background-color: green;
     height: 400px;
     margin-top: 1rem;
     width: 400px;
     border-radius: 6px;
+    margin-top: 83px;
+    border-radius: 24px;
+  }
+
+  #houseChart{
+    height: 500px;
+    background-color: white;
+    border-radius: 24px;
   }
 
   .grafico2{
     margin-left: 40px;
-    background-color: orange;
     height: 400px;
     width: 634px;
     margin-top: 1rem;
-    border-radius: 6px;
+    border-radius: 24px;
+    padding: 1rem;
+    flex: 1;
+    flex-direction: column;
+    gap: 1rem;
   }
 
+
+  .grafico2 h2{
+    margin-top: 0;
+  }
+
+  .grafico2 textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    border: 1px solid #ccc;
+    resize: vertical;
+    height: 200px;
+}
+
+.grafico2 button {
+    align-self: flex-end;
+    padding: 0.5rem 1rem;
+    background-color: var(--secondary-color);
+    color: var(--text);
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
   
+}
+
+.grafico2 button:hover {
+    background-color: var(--secondary-color-hover);
+}
+
+#messageContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.message {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+    background-color: white;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.message .content {
+    flex: 1;
+}
+
+.message .actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.message .actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text);
+}
+
+.message .actions button:hover {
+    color: var(--text-hover);
+}
+
+  .hide-text{
+    font-size: 35px;
+    display: flex;
+    font-family: Lumus, sans-serif;
+    color: rgb(168, 126, 20);
+    margin-left: 45px;
+  }
+
+  .iconDash{
+    width: 90px;
+    height: 90px;
+  }
+
+  .iconDashh{
+    width: 70px;
+    height: 70px;
+  }
+
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.avatar_wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.online_status {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+}
+
+#imageUpload {
+    margin-top: 10px;
+}
+
+.uploadButton{
+  border-radius: 24px;
+  width: auto;
+  height: 40px;
+  background-color: #201a3d;
+  border: #10141B;
+  color: silver;
+  font-family: sans-serif;
+  transition: 0.5s;
+}
+
+.uploadButton:hover{
+  background-color: #0c0822;
+ 
+}

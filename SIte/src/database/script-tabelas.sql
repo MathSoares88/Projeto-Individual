@@ -16,14 +16,27 @@ CREATE TABLE quiz (
     respostas VARCHAR(45)
 );
 
-CREATE TABLE resultadoQuiz (
-    idResultado INT, 
-    fkUsuario INT, 
-    fkQuiz INT, 
-    resultado VARCHAR(45),
-    CONSTRAINT fkUsuario FOREIGN KEY (fkUsuario)
-        REFERENCES usuario(idUsuario),
-    CONSTRAINT fkQuiz FOREIGN KEY (fkQuiz)
-        REFERENCES quiz(idQuiz), 
-    CONSTRAINT pkTripla PRIMARY KEY (idResultado, fkUsuario, fkQuiz)
+
+CREATE TABLE resultados_quiz (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuarioId INT,
+    casa VARCHAR(50),
+    FOREIGN KEY (usuarioId) REFERENCES usuario(idUsuario)
+);
+
+CREATE TABLE mensagens(
+ idMensagem INT PRIMARY KEY AUTO_INCREMENT,
+    usuarioId INT,
+    mensagem TEXT,
+    dataMensagem TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (usuarioId) REFERENCES usuario(idUsuario)
+);
+
+CREATE TABLE patronos (
+    idPatrono INT PRIMARY KEY AUTO_INCREMENT,
+    usuarioId INT,
+    patronoNome VARCHAR(100),
+    patronoImagem VARCHAR(255),
+    dataPatrono TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (usuarioId) REFERENCES usuario(idUsuario)
 );
